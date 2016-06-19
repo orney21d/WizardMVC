@@ -1,34 +1,39 @@
 ﻿@model WizardMVC.Models.ContactDetails
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ContactDetails</title>
-</head>
-<body>
-    @using (Html.BeginForm("ContactDetails", "Home", FormMethod.Post))
-    {
-        <h1>Step 3 : Contact Details</h1>
-        @Html.LabelFor(m => m.ContactName)<br />
-        @Html.TextBoxFor(m => m.ContactName)
-        @Html.ValidationMessageFor(m => m.ContactName)
-        <br />
-        @Html.LabelFor(m => m.Phone)<br />
-        @Html.TextBoxFor(m => m.Phone)
-        @Html.ValidationMessageFor(m => m.Phone)
-        <br />
-        @Html.LabelFor(m => m.Fax)<br />
-        @Html.TextBoxFor(m => m.Fax)
-        @Html.ValidationMessageFor(m => m.Fax)
-        <br />
-        <input type="submit" name="prevBtn" value='Previous' />
-        <input type="submit" name="nextBtn" value='Finish' />
-    }
-</body>
-</html>
+@using (Html.BeginForm("ContactDetails", "Home", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+                <h1>Step 3 : Contact Details</h1>
+                <fieldset>
+                    @Html.LabelFor(m => m.ContactName, "Contact Name")
+                    @Html.ValidationMessageFor(m => m.ContactName, "Please enter contact name.", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(m => m.ContactName, new { @class = "form-control" })
+                </fieldset>
+                <br />
+                <fieldset>
+                    @Html.LabelFor(m => m.Phone)
+                    @Html.ValidationMessageFor(m => m.Phone, "Please enter a phone number.", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                </fieldset>
+                <br />
+                <fieldset>
+                    @Html.LabelFor(m => m.Fax)
+                    @Html.ValidationMessageFor(m => m.Fax, "Please enter a FAX number.", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(m => m.Fax, new { @class = "form-control" })
+                </fieldset>
+                <br />
+                <input type="submit" name="prevBtn" value='Previous' class="btn btn-info" />
+                <input type="submit" name="nextBtn" value='Finish' class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

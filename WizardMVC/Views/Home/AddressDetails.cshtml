@@ -1,38 +1,46 @@
 ﻿@model WizardMVC.Models.AddressDetails
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>AddressDetails</title>
-</head>
-<body>
-    @using (Html.BeginForm("AddressDetails", "Home", FormMethod.Post))
-    {
-        <h1>Step 2 : Address Details</h1>
-        @Html.LabelFor(m => m.Address)<br />
-        @Html.TextBoxFor(m => m.Address)
-        @Html.ValidationMessageFor(m => m.Address)
-        <br />
-        @Html.LabelFor(m => m.City)<br />
-        @Html.TextBoxFor(m => m.City)
-        @Html.ValidationMessageFor(m => m.City)
-        <br />
-        @Html.LabelFor(m => m.Country)<br />
-        @Html.TextBoxFor(m => m.Country)
-        @Html.ValidationMessageFor(m => m.Country)
-        <br />
-        @Html.LabelFor(m => m.PostalCode)<br />
-        @Html.TextBoxFor(m => m.PostalCode)
-        @Html.ValidationMessageFor(m => m.PostalCode)
-        <br />
-        <input type="submit" name="prevBtn" value='Previous' />
-        <input type="submit" name="nextBtn" value='Next' />
-    }
-</body>
-</html>
+@using (Html.BeginForm("AddressDetails", "Home", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+                <h1>Step 2 : Address Details</h1>
+                <fieldset>
+                    @Html.LabelFor(m => m.Address)
+                    @Html.ValidationMessageFor(m => m.Address, "Please enter an address.", new { @class = "text-danger" })
+                    <br/>
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                </fieldset>
+                <br />
+                <fieldset>
+                    @Html.LabelFor(m => m.City)
+                    @Html.ValidationMessageFor(m => m.City, "Please enter a city.", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                </fieldset>
+                <br />
+                <fieldset>
+                    @Html.LabelFor(m => m.Country)
+                    @Html.ValidationMessageFor(m => m.Country, "Please enter a country.", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+                </fieldset>
+                <br />
+                <fieldset>
+                    @Html.LabelFor(m => m.PostalCode, "ZIP Code")
+                    @Html.ValidationMessageFor(m => m.PostalCode, "Please enter a ZIP Code.", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                </fieldset>
+                <br />
+                <input type="submit" name="prevBtn" value='Previous' class="btn btn-info" />
+                <input type="submit" name="nextBtn" value='Next' class="btn btn-primary"/>
+            </div>
+        </div>
+    </div>
+}

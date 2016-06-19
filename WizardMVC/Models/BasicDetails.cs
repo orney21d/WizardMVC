@@ -8,7 +8,7 @@ namespace WizardMVC.Models
 {
     public class BasicDetails
     {
-        [Required]
+        //[Required]
         public int CustomerID { get; set; }
         [Required]
         [StringLength(30)]

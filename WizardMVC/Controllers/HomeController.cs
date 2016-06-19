@@ -36,7 +36,7 @@ namespace WizardMVC.Controllers
                 if (ModelState.IsValid)
                 {
                     Customer obj = GetCustomer();
-                    obj.CustomerID = data.CustomerID;
+                    //obj.CustomerID = data.CustomerID;
                     obj.CompanyName = data.CompanyName;
                     return View("AddressDetails");
                 }
@@ -70,8 +70,7 @@ namespace WizardMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult ContactDetails(ContactDetails data,
-string prevBtn, string nextBtn)
+        public ActionResult ContactDetails(ContactDetails data, string prevBtn, string nextBtn)
         {
             Customer obj = GetCustomer();
             if (prevBtn != null)
